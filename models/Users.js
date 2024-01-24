@@ -25,7 +25,13 @@ const UserSchema = new mongoose.Schema({
       type: Boolean,
      },
      College : {
-        type : String
+        type : String,
+        required:[true, 'college name is required'],
+        trim:true,
+     },
+     Referral:{
+         type:String,
+         trim:true,
      },
      Profile_Photo : {
         type : String,
