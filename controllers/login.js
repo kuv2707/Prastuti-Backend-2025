@@ -34,7 +34,8 @@ const loginUser = async (req, res) =>{
               Teams: [],
               Pending_Requests: [],
               Events_Participated: [],
-              is_form_filled:false
+              is_form_filled:false,
+              College:'Indian Institute of Technology (BHU), Varanasi',
           }
           user = await Users.create(newUser);
       }
