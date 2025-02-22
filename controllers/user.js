@@ -1,6 +1,6 @@
 const UserModel = require('../models/Users');
 const EventModel = require('../models/Events');
-
+//a simple change
 // getting info about all users registered
 const getAllUsers = async (req, res) => {
    try {
