@@ -3,8 +3,8 @@ require("express-async-errors");
 const app = express();
 require("dotenv").config();
 const cors = require("cors");
-const router = require("./routes/routes");
 const mongoose = require("mongoose");
+const router = require("./routes/routes");
 const Team = require("./models/Teams");
 
 const PORT = process.env.PORT || 8000;

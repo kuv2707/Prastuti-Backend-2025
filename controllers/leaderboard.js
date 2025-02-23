@@ -7,8 +7,8 @@ const getEventLeaderboard = async (req, res) => {
   const event = await Event.findOne({ Name: eventName });
 
   if (!event.team_event) {
-    let data = event.Participants.map(async(user) => {
-      const curUser = await Users.findById({_id: user.participant});
+    let data = event.Participants.map(async (user) => {
+      const curUser = await Users.findById({ _id: user.participant });
       return {
         Name: curUser.Name,
         College: curUser.College,
