@@ -22,28 +22,27 @@ const deleteRequest = async (req, res) => {
 
   //deleting from team ->Pending requests
   const team = await Teams.findById(request.team._id);
-    await Teams.updateOne(
-      { _id: request.team._id },
-      { $pull: { Pending_Requests: request._id } },
-      {
-        new: true,
-      }
-    );
+  await Teams.updateOne(
+    { _id: request.team._id },
+    { $pull: { Pending_Requests: request._id } },
+    {
+      new: true,
+    },
+  );
 
-   await Users.updateOne(
-       {_id: request.requested_to._id} ,
-      { $pull: { Pending_Requests: request._id } },
-      {
-        new: true,
-      }
-    );
-    const updatedUser = await Users.findByIdAndUpdate(request.requested_to._id);
+  await Users.updateOne(
+    { _id: request.requested_to._id },
+    { $pull: { Pending_Requests: request._id } },
+    {
+      new: true,
+    },
+  );
+  const updatedUser = await Users.findByIdAndUpdate(request.requested_to._id);
 
-    res.status(200).json({
-      message:"Request Deleted Successfully!!",
-      updatedUser
-    })
-
+  res.status(200).json({
+    message: "Request Deleted Successfully!!",
+    updatedUser,
+  });
 };
 
 const sendRequest = async (req, res) => {
@@ -77,7 +76,7 @@ const sendRequest = async (req, res) => {
     if (team.Member_Count < 3) {
       //Save a new request to the database
       const request = new Requests({
-        teamName: team.Team_Name, 
+        teamName: team.Team_Name,
         team: req.body.team_id,
         requested_to: user._id,
         requested_from: req.body.user_id,
@@ -91,7 +90,7 @@ const sendRequest = async (req, res) => {
         { $push: { Pending_Requests: request._id } },
         {
           new: true,
-        }
+        },
       );
 
       //Add request to user
@@ -101,7 +100,7 @@ const sendRequest = async (req, res) => {
         { $push: { Pending_Requests: request._id } },
         {
           new: true,
-        }
+        },
       );
 
       res.status(200).json({
@@ -144,14 +143,14 @@ const acceptRequest = async (req, res) => {
       { $pull: { Pending_Requests: request._id } },
       {
         new: true,
-      }
+      },
     );
     await Users.updateOne(
       { _id: request.requested_to._id },
       { $pull: { Pending_Requests: request._id } },
       {
         new: true,
-      }
+      },
     );
 
     if (team.Members.length === 3) {
@@ -169,7 +168,7 @@ const acceptRequest = async (req, res) => {
       },
       {
         new: true,
-      }
+      },
     );
 
     res.status(200).json({

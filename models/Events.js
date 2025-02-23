@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 // imported user and team schema
+const { type } = require("express/lib/response");
 const User = require("./Users");
 const Team = require("./Teams");
-const { type } = require("express/lib/response");
 
 // declaring event schema
 const EventSchema = new mongoose.Schema({
@@ -32,11 +32,11 @@ const EventSchema = new mongoose.Schema({
   resourses: {
     type: String,
   },
-  player_ids:[
+  player_ids: [
     {
-     type: String
-    }
-   ],
+      type: String,
+    },
+  ],
   timeline: [
     {
       Date: {
@@ -46,8 +46,7 @@ const EventSchema = new mongoose.Schema({
       slot: {
         type: String,
         required: false,
-      }
-      ,
+      },
       title: {
         type: String,
         required: true,
@@ -56,7 +55,7 @@ const EventSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
       },
-    }
+    },
   ],
   no_of_participants: {
     type: Number,
@@ -91,4 +90,6 @@ const EventSchema = new mongoose.Schema({
 });
 
 // exporting event schema
-module.exports = Event = mongoose.model("event", EventSchema);
+const Event = mongoose.model("event", EventSchema);
+module.exports = Event;
+//module.exports = Event = mongoose.model("event", EventSchema);
