@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 const teamModel = require("./Teams");
 const eventModel = require("./Events");
 const requestModel = require("./Request");
@@ -15,9 +16,7 @@ const UserSchema = new mongoose.Schema({
     required: [true, "e-mail is required"],
     trim: true,
     validate: {
-      validator: function (input) {
-        return /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(input);
-      },
+      validator: validator.isEmail,
       message: "Please enter a valid email",
     },
   },

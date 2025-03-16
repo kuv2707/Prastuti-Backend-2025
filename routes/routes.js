@@ -29,7 +29,11 @@ const {
 // need to get all the functions from controller
 
 // login and signup
-Router.route("/login").get().post(loginUser);
+Router.route("/login")
+  .get((req, res) => {
+    res.end("Login service up. POST here.");
+  })
+  .post(loginUser);
 
 // making a user and getting all users
 Router.route("/user/:id").get(getUser).put(editUser); //individual
