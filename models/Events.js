@@ -12,13 +12,13 @@ const EventSchema = new mongoose.Schema({
     trim: true,
     enum: {
       values: [
-        "Consilium",
-        "Codigo",
-        "Cryptex",
         "Codigo",
         "Hackoverflow",
         "Recognizance",
         "Simulim",
+        "Consilium",
+        "Oscillion",
+        "Paper Presentation",
       ],
       message: "Event name is not valid",
     },

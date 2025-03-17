@@ -19,7 +19,7 @@ export default [
       },
     },
     plugins: {
-      prettier: prettierPlugin,
+      // prettier: prettierPlugin,
       node: nodePlugin,
       import: importPlugin,
     },
